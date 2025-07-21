@@ -1,0 +1,50 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: blog_api
+    env_file: .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=core.settings
+    command: sh -c "
+      python manage.py migrate
+      && python manage.py loaddata admin_user.json
+      && python manage.py loaddata test_data.json
+      && python manage.py collectstatic --noinput
+      && gunicorn core.wsgi:application --bind 0.0.0.0:8000 --reload"
+    expose:
+      - 8000
+    networks:
+      - blog-net
+    volumes:
+      - .:/backend
+      - ./logs:/api/logs
+      - staticfiles:/api/staticfiles
+      - media:/api/media
+    restart: on-failure
+    stdin_open: true
+    tty: true
+
+  proxy:
+    image: nginx:latest
+    restart: always
+    networks:
+      - blog-net
+    ports:
+      - 80:80
+    volumes:
+      - ./scripts/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./logs:/var/log/nginx
+      - staticfiles:/api/staticfiles
+      - media:/api/media
+    depends_on:
+      - backend
+
+networks:
+  blog-net:
+    driver: bridge
+
+volumes:
+  staticfiles:
+  media:
