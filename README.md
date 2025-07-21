@@ -80,7 +80,8 @@ docker compose exec backend pytest
 
 ## 📄 Documentation
 <img width="1513" height="1279" alt="2025-07-21_02-54" src="https://github.com/user-attachments/assets/8fcae136-740c-45fe-bb06-4e2a07a07aee" />
-<img width="1538" height="1377" alt="2025-07-21_03-09" src="https://github.com/user-attachments/assets/868e4ed4-1ad1-4923-82b0-9b0335c9657f" />
+<img width="1536" height="1389" alt="2025-07-21_04-12" src="https://github.com/user-attachments/assets/1333cbda-6177-4eb9-8307-f831747ff2c6" />
+
 
 Swagger UI available at:
 
