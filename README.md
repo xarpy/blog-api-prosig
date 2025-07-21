@@ -25,8 +25,8 @@ RESTful API for a simple blogging platform using Django and Django REST Framewor
 Clone the project and install dependencies:
 
 ```bash
-git clone https://github.com/youruser/blog-api.git
-cd blog-api
+git@github.com:xarpy/blog-api-prosig.git
+cd blog-api-prosig
 pip install -r requirements/dev.txt
 ```
 
