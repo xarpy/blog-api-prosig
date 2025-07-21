@@ -32,6 +32,7 @@ pip install -r requirements/dev.txt
 
 **Obs:**
 You can create your super user, using the command: `python manage.py createsuperuser`, if won't, just use my test such as exmaple for that, *username*: **test_only**, *password*: **12345**.
+Dont forget to convert the file env.example to .env file
 
 Apply migrations and load test data:
 
